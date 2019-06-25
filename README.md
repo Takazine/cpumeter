@@ -27,6 +27,7 @@ cd cpumeter
 ### スクリプト実行
 
 ```
+sudo chmod +x cpu_meter.py
 ./cpu_meter.py
 ```
 

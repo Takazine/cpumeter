@@ -19,20 +19,20 @@ def main():
     bus.write_byte_data(ADDRESS, 0x01, 0x05) # mode2
     bus.write_byte_data(ADDRESS, 0xFE, 0x05) # pwm freq.
 
+    time.sleep(0.25)
+
     while True:
-        time.sleep(0.25)
-        
         # CPU負荷、CPU温度データ取得
         cpu_percent = psutil.cpu_percent(interval=0.2)
         cpu_temp = float(commands.getoutput(GETCMD))/1000
 
 #        print "CPU=",cpu_percent
-        cpu_percent = cpu_percent*4096/100
+        cpu_percent = cpu_percent*4095/100
         cpu_h = int(cpu_percent/256)
         cpu_l = int(cpu_percent)-cpu_h
         
 #        print "TEMP=",cpu_temp
-        cpu_temp = cpu_temp*4096/100
+        cpu_temp = cpu_temp*4095/100
         temp_h = int(cpu_temp/256)
         temp_l = int(cpu_temp)-temp_h
         
